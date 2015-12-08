@@ -79,7 +79,7 @@ def main():
     state['taskHours'] = 0.0
 
     # 1. Start display process
-    matrix_process = Process(target=matrix.run, args=(matrix, state))
+    matrix_process = Process(target=matrix.run, args=(state,))
     matrix_process.start()
 
 
