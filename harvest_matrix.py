@@ -53,14 +53,12 @@ class Matrix(object):
             elif self.displayState == self.STATE_TASK_RUNNING:
                 pass
 
-
-def matrix_process():
-    matrix = Matrix()
-
-    while True:
-        matrix.run()
-
-
+#
+# def matrix_process():
+#     matrix = Matrix()
+#
+#     while True:
+#         matrix.run()
 
 
 def main():
@@ -71,7 +69,6 @@ def main():
     options = parser.parse_args()
     print(options)
 
-
     matrix = Matrix()
 
     manager = Manager()
@@ -81,10 +78,9 @@ def main():
     state['projectCode'] = ''
     state['taskHours'] = 0.0
 
-
     # 1. Start display process
-    matrixProcess = Process(target=matrix.run(), args=(matrix, state))
-    matrixProcess.start()
+    matrix_process = Process(target=matrix.run, args=(matrix, state))
+    matrix_process.start()
 
 
 
