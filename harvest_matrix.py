@@ -23,7 +23,7 @@ class Matrix(object):
 
     def run(self, state):
         while True:
-            print(state['state'])
+            print(state['status'])
             if self.displayState == self.STATE_STOPPED:
                 print("Run:State Stopped")
                 # self.matrix.Fill(255, 0, 0)
