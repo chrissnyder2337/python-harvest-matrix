@@ -74,17 +74,19 @@ def main():
     manager = Manager()
     state = manager.dict()
 
-    state['status'] = Matrix.STATE_NO_TASK
+    state['status'] = "old"
     state['projectCode'] = ''
     state['taskHours'] = 0.0
 
     # 1. Start display process
     matrix_process = Process(target=matrix.run, args=(state,))
     matrix_process.start()
+    time.sleep(2)
+    state['status'] = "new"
+    time.sleep(2)
+    state['status'] = "newwer"
 
-
-
-
+    matrix_process.join()
 
 
     # 2. Start geting harvest information
