@@ -25,19 +25,19 @@ class Matrix(object):
         while True:
             if self.displayState == self.STATE_STOPPED:
                 print("Run:State Stopped")
-                self.matrix.Fill(255, 0, 0)
-                time.sleep(5)
-                self.matrix.Clear()
-                self.matrix.Fill(0, 255, 0)
-                time.sleep(5)
-                self.matrix.Clear()
-                # canvas = self.matrix.CreateFrameCanvas()
-                # font = graphics.Font()
-                # font.LoadFont("./rpi-rgb-led-matrix/fonts/5x7.bdf")
-                # textColor = graphics.Color(255, 255, 0)
-                # myText = "stopped"
-                # graphics.DrawText(canvas, font, 0, 10, textColor, myText);
-                # self.matrix.SwapOnVSync(canvas)
+                # self.matrix.Fill(255, 0, 0)
+                # time.sleep(5)
+                # self.matrix.Clear()
+                # self.matrix.Fill(0, 255, 0)
+                # time.sleep(5)
+                # self.matrix.Clear()
+                canvas = self.matrix.CreateFrameCanvas()
+                font = graphics.Font()
+                font.LoadFont("./rpi-rgb-led-matrix/fonts/5x7.bdf")
+                textColor = graphics.Color(255, 255, 0)
+                myText = "stopped"
+                graphics.DrawText(canvas, font, 0, 10, textColor, myText);
+                self.matrix.SwapOnVSync(canvas)
             elif self.displayState == self.STATE_STARTED:
                 print("Run:State Stopped")
                 canvas = self.matrix.CreateFrameCanvas()
