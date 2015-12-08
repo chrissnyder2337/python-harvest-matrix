@@ -3,7 +3,7 @@ from rgbmatrix import RGBMatrix
 from rgbmatrix import graphics
 import time
 import harvest
-import multiprocessing
+from multiprocessing import Process, Manager
 import argparse
 
 
@@ -21,8 +21,9 @@ class Matrix(object):
         self.height = 16
         self.matrix = RGBMatrix(self.height, 1, 1)
 
-    def run(self):
+    def run(self, state):
         while True:
+            print(state['state'])
             if self.displayState == self.STATE_STOPPED:
                 print("Run:State Stopped")
                 # self.matrix.Fill(255, 0, 0)
@@ -70,8 +71,19 @@ def main():
     options = parser.parse_args()
     print(options)
 
+
+    matrix = Matrix()
+
+    manager = Manager()
+    state = manager.dict()
+
+    state['status'] = Matrix.STATE_NO_TASK
+    state['projectCode'] = ''
+    state['taskHours'] = 0.0
+
+
     # 1. Start display process
-    matrixProcess = multiprocessing.Process(target=matrix_process)
+    matrixProcess = Process(target=matrix.run(), args=state)
     matrixProcess.start()
 
 
