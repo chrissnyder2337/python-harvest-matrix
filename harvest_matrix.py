@@ -83,7 +83,7 @@ def main():
 
 
     # 1. Start display process
-    matrixProcess = Process(target=matrix.run(), args=state)
+    matrixProcess = Process(target=matrix.run(), args=(matrix, state))
     matrixProcess.start()
 
 
